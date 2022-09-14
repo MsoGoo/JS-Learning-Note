@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>34_functionMethod</title>
+    <script>
+        function func() {
+            for (var element in this) {
+                if (typeof(this[element]) == "function") {
+                    this[element]();
+                } else {
+                    console.log(element + ": " + this[element]);
+                }
+            }
+        }
+
+        //func();  //print all the elements in window
+        // func.call();
+        // func.apply();
+
+        /* 
+            call() and apply() can both calling the function
+            call() and apply() can use an object as the first parameter
+            call() & apply() can change the this pointer.
+        */
+
+        var obj = {
+            name : "hahaha",
+            age : 18,
+            talk : function() {
+                console.log("hello");
+            }
+        };
+        
+        // obj.talk(); 
+        func.call(obj);
+        func.apply(obj);
+
+        /*  
+        
+            call() method can pass the actual parameter after the object
+            apply() method need to encapsulation the actual parameters into an array
+            
+            this:
+                -use function formal to call the function, this -> window
+                -use method to call the function, this->obj
+                -use constructor to call the function, this-> new created obj
+                -use call() & apply(), this-> pass in obj
+         
+        */
+    
+        function func_1(a, b) {
+            console.log("a = " + a);
+            console.log("b = " + b);
+        }
+
+        func_1.call(obj, 1, 2);
+        func_1.apply(obj, [1,2]);
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

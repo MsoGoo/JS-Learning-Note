@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>36_dateObj</title>
+    <script>
+        /* 
+            Date object
+                - JS use date represent time
+        */
+
+        // d is the time when executing the code.
+        var d = new Date();
+        console.log(d);
+
+        //if need a specificed time
+        //pass a time string as parameter
+        //time string formal: month/day/year hour:minute:second
+        var d2 = new Date("12/03/2012 11:10:30");
+        console.log(d2);
+
+        var date = d2.getDate();
+        var day = d2.getDay();
+        var month = d2.getMonth();
+        console.log(date);
+        console.log(day);   //0 indexed
+        console.log(month); //0 indexed
+        
+        // timestamp
+        // time length since 1970/01/01 0:0:0 till now. In milliseconds.
+        var time = d2.getTime();
+        console.log(time);
+
+        //get current timestamp, Date.now()
+        var start = Date.now();
+        for (var i = 0; i < 1e9; ++i) {}
+        var end = Date.now();
+        console.log((end - start) / 1000);
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

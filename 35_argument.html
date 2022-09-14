@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>35_argument</title>
+    <script>
+        /*
+            when calling the functin, browser will pass in 2 anonymous parameters
+                1. context object (this)
+                2. encapsulate object's argument
+                    -argument is an class array obj, it's not an array. it can also use index to manipulate the data, and get lenght.
+                    - when calling the function, all the parameters(actual parameters) will be stored in the arguments
+                    - even we doesn't define the formal parameter, we can still use arguments to get the actual parameter! 
+                        -argument[0] -> first actual arguments
+                        -argument[1] -> second actual arguments
+                        -...
+                    - arguments has a callee function, return the current function
+        */
+
+        function func() {
+            // console.log(arguments instanceof Array);
+            console.log(arguments.length);
+            // console.log(arguments[0]);
+            console.log(typeof arguments);
+            console.log(arguments.callee);
+            console.log(arguments.callee == func);
+
+        }
+
+        func("hello",  true);
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

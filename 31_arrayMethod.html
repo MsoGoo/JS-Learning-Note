@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>31_arrayMethod</title>
+    <script>
+        var arr = ["hello", "world", "haha"];
+        
+        /* 
+            push() 
+                - can add one or more elements to the tail of the array
+                - return the length of the current array
+
+            pop() 
+                - remove the last elements
+                - return removed element
+
+            unshift()
+                - add one or more elements at the begin of the array
+                - all elements' index will be modified.
+                - return the new lengh
+
+            shift()
+                - remove the first element
+        */
+
+        arr.push("!");
+        var test = arr.push("!!", "!!!");
+        console.log(test);  // 6
+
+        test = arr.pop();
+        console.log(test);  // !!!
+
+        test = arr.unshift("Leading");
+        console.log(arr);
+
+        test = arr.shift();
+        console.log(arr);
+        console.log(test);  // leading
+
+
+        //array traversal
+        for (var i = 0; i < arr.length; ++i) {
+            console.log(arr[i]);
+        }
+
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        Person.prototype.toString = function() {
+          return "Name: " + this.name + ", Age: " + this.age;  
+        } 
+        
+        var per_1 = new Person("haha", 12);
+        var per_2 = new Person("what", 23);
+        var per_3 = new Person("are", 34);
+        var per_4 = new Person("you", 15);
+        var per_5 = new Person("doing?", 26);
+        
+        var perArray = [per_1, per_2, per_3, per_4, per_5];
+        
+
+        //use a function to return a new array that includes all the elements in the input array with age greater than 18
+        function func(Arr) {
+            var per_18 = [];
+            for (var i = 0; i < Arr.length; ++i) {
+                if (Arr[i].age >= 18) {
+                    per_18.push(Arr[i]);
+                }
+            }
+            return per_18;
+        } 
+        var per_18 = func(perArray);
+        console.log(per_18);
+        
+        
+
+
+
+
+        </script>
+</head>
+<body>
+    
+</body>
+</html>

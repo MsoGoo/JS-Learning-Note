@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>33_arrayPractice</title>
+    <script>
+        //remove duplicate numbers
+        var arr = [1,2,3,4,5,1,2,3,4,1,1];
+
+        for (var i = 0; i < arr.length; ++i) {
+            for (var j = i + 1; j < arr.length; ++j) {
+                if (arr[j] == arr[i]) {
+                    arr.splice(j, 1);
+                    j--;
+                }
+            }
+        }
+        console.log(arr);
+
+        //concat() can combine 2 or more multiple arr
+        //won't change the original array;
+        var arr_1 = [6,6,6,6,6];
+        var arr_2 = ["string", "array"];
+
+        var temp = arr.concat(arr_1, arr_2);
+        console.log(temp);
+
+        //join() change the arr to string
+        //can pass an string in the join function as connection symbol
+        //if don't pass any string, connection symbol's default is ','    
+        console.log("join function example");
+        var test = temp.join();
+        console.log(typeof test);
+        console.log(test);
+
+        test = temp.join(" ");
+        console.log(test);
+
+        //reverse function
+        //it will change the original function
+        console.log("reverse example");
+        console.log(temp);
+        temp.reverse();
+        console.log(temp);
+
+        //sort function
+        //it will change the original function
+        //sort based on the unicode encoding.
+        //when sort on numbers might get error result
+        temp.sort();
+        console.log(temp);
+
+        console.log("sort error example");
+        var arr_s = [1,30,20,100000];
+        console.log(arr_s);
+        arr_s.sort();
+        console.log(arr_s);
+        
+        console.log("sort error fix");
+        //need to re-define the function
+        //if the function return a number > 1 then swap
+        //                return == 0 or < 1 doesn't swap
+        arr_s.sort(function(a, b) {
+            return a > b ? 1 : -1;
+
+            //return a - b (升序)
+            //return b - a (降序)
+        })
+
+        console.log(arr_s);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>32_arrayMethod(2)</title>
+    
+    <script>
+        /* 
+            forEach() 
+                - traversal the array
+                - doesn't support IE8 or lower version brower
+                - forEach() needs a function as parameter
+                    - note: for this kind of function, created by us, but not call by us, named call back funciton
+                    - the first input parameter represent the first elements
+                    - the second input elements represent the index of the current element
+                    - the last input elements represent the array 
+        */
+
+        var arr = ["hello", "world", "haha", "what"];
+        arr.forEach(function(parameters, index, what) {
+            console.log(parameters + "  " + index + "  " + what);
+        })
+
+
+        /* 
+            slice()
+                - get the specified element from array
+                - parameter:
+                    1. start pos
+                    2. end pos
+                - [start pos, end pos) 
+                - won't change the original array
+                - if don't pass the end pos, will slice the array since the start pos
+                - end pos can be a negative number, count from back to start.
+        */
+        
+        var arr_1 = arr.slice(0, 3);
+        console.log(arr_1);
+
+        var arr_1 = arr.slice(0, -2);
+        console.log(arr_1);
+        
+        /* 
+            splice()
+                -remove the element in the array
+                -it will change the original array
+                -it will return the removed element
+            
+                - the first input is the start pos
+                - the second input is how many elements want to removed since the start position
+                - the third input will automatically be inserted at the remove start pos.        
+        */
+        
+        var res = arr.splice(0 , 3);
+        console.log("Splice remove example")
+        console.log(arr);
+        console.log(res);
+        
+        console.log("Splice remove & add example");
+        arr.splice(0, 1, "it's", "something", "new");
+        console.log(arr);
+
+        //use JS to achieve forEach function
+
+        // if(!Array.prototype.forEach) {
+        //     Array.prototype.forEach = function(fn, context) {
+        //         var context = arguments[1];
+        //         if(typeof fn !== "function") {
+        //             throw new TypeError(fn + "is not a function");
+        //         }
+
+        //         for(var i = 0; i < this.length; i++) {
+        //             fn.call(context, this[i], i, this);
+        //         }
+        // };
+
+        // call back function example
+        // function temp(test) {
+        //     test();
+        // }
+        
+        // function test() {
+        //     console.log("It's a test!");
+        // }
+
+        // temp(test);
+        // temp(function(){console.log("another Test")});
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
