@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>39_stringMethods</title>
+    <script>
+        
+        //The bottom layer is implemented by a character array
+        var str = "Hello World";
+
+        console.log(str.length);
+        console.log(str[0]);
+        console.log(str.charAt(0));
+        //return the unicode coding at specifiec index
+        console.log(str.charCodeAt(0));
+
+        //return the char based on the given unicode coding
+        console.log(String.fromCharCode(0x2013));
+
+        //check if there is 'H' in the str, if yes, return the index of the first appear index. case sensitive
+        //return -1 if the expected char is not found
+        //the second parameter is the start search position
+        console.log(str.indexOf("H", 2));
+        //search from back
+        console.log(str.lastIndexOf("H"));
+
+        //slice() and substring() are basically same
+        //slice() can have negative parameters, substring() cannot
+        //if the 2 parameters in substring() a, b : a > b, substring will swap those 2 parameters. => substring(0,1) and substring(1,0) means same
+        
+
+        //splite the string based on the given specified string, and this specified string will not be in the result
+        //return array
+        var temp_split = "asdfeeghj";
+        var result = temp_split.split("e");
+        console.log(result);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

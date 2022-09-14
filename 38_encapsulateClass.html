@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>38_encapsulateClass</title>
+
+    <script>
+        //don't use basic data type object
+        var num1 = new Number(1);
+        var num2 = new Number(1);
+        console.log(num1 == num2); //fasle, pointing to different address
+
+        //alert will still pop out eventhough b is true;
+        //b is an object, when we pass an object to the if(obj), transform the obj into a boolean.
+        //because every object transform into boolean is true
+        var b = new Boolean(false);
+        if (b) {
+            alert("working");
+        }
+    
+        //!!!!!!!!!!!!!!!!!!!!!!! never do the above things.
+
+        /* 
+            method and elements can only be given to obj, cannot add to the basic data type.
+            when we call a method or use an element of a basic data type, the browser will temporarily use encapsulate class to transform the basic data type into obj, then do the manipulation, then transform it back.
+        
+        */
+        var s = 123;
+        s = s.toString();
+        console.log(typeof(s));
+
+        //delete the hello element later.
+        s.hello = "hello";
+        console.log(s.hello);   //undefined
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

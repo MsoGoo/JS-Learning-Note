@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>40_regularExpression</title>
+    <script>
+        /* 
+            use email as example
+            rules of email address
+                1. XXXX
+                2. followed with @
+                3. XXXXX
+                4. followed with .com
+        */
+
+        /* 
+            grammar:
+                var variable = new RegExp("regular expression","match mode")
+                match mode can be: i(ignore upper & lower case) or g(global match case sensitive)
+                default match mode is g
+            method: 
+                - test()
+                    use this method to check if a string follow the regular expression rule or not
+        */
+        var reg = new RegExp("a", "i"); //check if a string has 'a', case sensitive
+        console.log(typeof reg);
+
+        // var str = "a";
+        // var res = reg.test(str);
+        // console.log(res);
+
+        console.log(reg.test("a"));
+        console.log(reg.test("A"));
+
+
+        /* 
+            use literal to create regular expression=
+                grammar: var variable = /expression/match mode
+        
+        */
+
+        //var reg = new RegExp("a", "i");
+        reg = /a/i; //same as above  
+        console.log(reg.test("a"));
+        console.log(reg.test("A"));
+
+
+        //  |=>or      &=>and
+        //check if there are a or b or c in string
+        reg = /a|b|c/;
+        console.log(reg.test("a"));
+        console.log(reg.test("b"));
+        console.log(reg.test("c"));
+
+        //the context in [] is also checked by or relation
+        //[ab] == a|b
+        //[a-z] any lower case letter
+        //[A-Z] any upper case letter
+        //[A-z] any letter
+        //[0-9] any number
+        reg = /[ag]/;
+        console.log(reg.test("c"));
+
+        //a to g (or)
+        reg = /[a-g]/;
+        console.log(reg.test("c"));
+
+        reg = /a[bde]c/ //abc | adc | aec
+        console.log(reg.test("abc"));
+
+
+        //[^ ab] except ab
+        reg = /[^ab]/;
+        console.log(reg.test("abc")); //true
+
+        reg = /[^0-9]/;
+        console.log(reg.test("abc123")); //true
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>42_regularExpresson(3)</title>
+    <script>
+        /* 
+            regular expression for multiple repeat elements
+                - quantifier for regular expression
+                - quantifier only works for the previous element. use ( ...){2} for multiple elements
+                - + => at least one or more
+                - * => one or more
+                - ? => only one 
+        */
+
+        var reg = /a{3}/
+        var str = "aaaa";
+        console.log(reg.test(str)); // ture a >= 3
+
+        reg = /(ab){2}/;
+        console.log(reg.test(str)); //fasle
+
+        var str = "abab";
+        reg = /(ab){1,2}/           // "ab" appear 1 or 2 times 
+        console.log(reg.test(str)); //true
+
+        reg = /(ab){3,}/            // "ab" appear 3 or more times.
+        console.log(reg.test(str)); //false
+        
+
+        //check is a string start with a
+        //here ^ doesn't mean "not", it means start with
+        //$ means end with;
+        reg = /^a$/;    //^...$ means the string has to completely match the expression. in this example, the string can only have 1 a
+        console.log(reg.test("a")); //true
+
+        reg = /^a | a$/; //start with a or end with a
+        
+        
+        //check if a string a phone number, 11digits, first is 1, second is 3-9, rest can by any
+        reg = /^1[3-9][0-9]{9}$/;
+        var str = "13012345678";
+        console.log(reg.test(str));
+
+
+        //check if a string contian '.'
+        //since '.' in RE means any char, use escape character \
+        var reg = /\./;
+        console.log(reg.test("asd."))
+
+
+        // Note, when using RE constuctor, the actual parameter is a string, if \ is used, repeat it twice
+        reg = new RegExp("\\."); //    check \.
+        console.log(reg); 
+        console.log(reg.test("\ab")); //false;
+        console.log(reg.test("\ab.")); //true;
+        
+        /* 
+            \w  
+                - any letter, number, and _  ==>[A-z0-9_]
+            \W
+                - opposite of \w ==> [^A-z0-9]
+            \d
+                - any number     ==> [0-9]
+            \D
+                - opposite of \d ==>[^0-9]
+            \s
+                - space
+            \S
+                - opposite of \s
+            \b
+                - letter bound    // see example
+            \B
+                - opposite of \b
+        
+        */
+
+        // \b example
+        reg = /child/;          //a string contain child letter,  "hellochild123" ==> return true
+        reg = /\bchild\b/       //a string contain child and it's seperated, "hello child12123" ==> false, "hello child 123" ==> true, "children" ==> false
+        
+        //enter the name
+        // var str = prompt("Enter your user Name");
+        // console.log(str);
+        
+        //remove " ";
+        var str = "       hello world       ";
+        str = str.replace(/\s/g, "");   //but it will remove all the space in the string
+        console.log(str);
+
+        //only remove the head spaces
+        str = str.replace(/^\s*/, "");
+        
+        //remove the tail spaces
+        str = str.replace(/\s*$/, "");
+
+        //remove head and tail spaces
+        str = str.replace(/^\s* | \s*$/g, "");
+
+
+        /* 
+            email RE:
+                - letter || digits || _ || .
+                - @
+                - letter || digits
+                - .2-5 letters . 2-5 any letters
+        */
+
+        reg = /^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/
+
+    </script>   
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>41_regularExpression(2)</title>
+
+    <script>
+        /* 
+            string and regular expression
+        */
+        
+        //split() and regular expression
+        var str = "1a2b3c4d5e6f";
+        var reg = /[A-z]/
+        var result = str.split(reg);    //split the array based on a-z letter
+        console.log(result);
+
+        /* 
+            search() and regular expression
+                - if the specified value is found, return the first appeared string's first letter's index.
+                - can also search the string based on reg
+        */
+        var str = "hello world aec afc";
+        reg = /a[b-f]c/
+        result = str.search(reg);   // search if there are abc | aec | afc in the string
+        console.log(result);
+
+        /* 
+            match()
+                -based on the regular expression to extract the matched context in the string.
+                - in default, match only finds the first matched context, we can set regular expression into global match mode. So it will return all the matched elements
+                - we can set several match modes for one regular expression, and the order doesn't matter. 
+                - match() will encapsulate all the matched elements into an array. Even there is only one element.
+        */
+
+        var str = "1a2b3c4d5e6f";
+        result = str.match(/[A-z]/ig); 
+        console.log(result);
+
+        /* 
+            replace()
+                - replace the specified elements;
+                - in default only replace 1 element
+        */
+
+        var str = "1a2b3a4d5e6f";
+        result = str.replace(/a/ig, "\n @----@ \n ");
+        console.log(result);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
