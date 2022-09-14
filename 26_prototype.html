@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>26_prototype</title>
+    <script>
+        /* 
+            everytime we create a function, the parser will add an element(prototype) into the function
+
+            each function has unique prototype
+
+            prototype corresponding to an object, this object is prototype
+
+            if it's just a normal function, prototype means nothing 
+
+            when the function is constructor, each object created by this constructor will have an element  point to the prototype
+
+            prototype object like a public area every variables intialized with the same class can access the constructor's prototype
+
+            with prototype, we can Set the content of the object uniformly into the prototype
+
+            when first access the object's elements, it will first search it's own scope. if we don't find this elements, then go search the prototype. 
+
+            for consturctors, we can store the public methods and elements into the prototype.
+
+
+
+        */
+
+        function Person() {
+
+        }
+
+        var per = new Person();
+        var per_ = new Person();
+        console.log(per.__proto__ == Person.prototype)
+
+
+        Person.prototype.a = 123;
+        console.log(per.a);
+
+        per.a = "1111111";
+        console.log(per.a);
+        console.log(per_.a);
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

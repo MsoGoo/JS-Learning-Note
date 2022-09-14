@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>20_functionScope</title>
+    <script>
+        /*
+            function scope
+                -create the scope when we execute the function
+                -delete the scope when the function is done.
+                -in the function scope, we can access the global variable
+                -if we manipulate a variable with the function scope. the function will first search if this variable is within the function or not, use the closest one. 
+                -if we want to access the variable in the other scope use obj.variable
+        */
+
+        var obj =  {
+            name : "name",
+            a : "a in obj"
+        }
+
+        var a = 10;
+        function func() {
+            console.log(a);
+            var b = 20;
+        }
+
+        func();
+        //doesn't work, b is in the function scope, after the function execute, it will be deleted.
+        // console.log(b);
+
+        function func_1() {
+            var a = "variable within function";
+
+            console.log(a);
+
+            function func_2() {
+                console.log(a);
+                console.log(obj.a);
+                console.log(window.a);
+            }
+            func_2();
+        }
+
+        func_1();
+
+        var c = 30;
+        function func_3() {
+            //within the scope, c is initialized, but not given the value into c, so it's undefined.
+            console.log("c = " + c);
+            var c = 10;
+        }
+        func_3();
+
+        function func_4() {
+            //within the scope, we haven't create another c in the function, this c is the global variable
+            console.log("c = " + c);
+            c = 10;
+            
+            //this d is also created as a global variable, becuase we don't use var to initialize it. it's equivalent to window.d = 100
+            d = 100;
+        }  
+        func_4(); 
+        console.log(d);
+
+        var e = 20;
+
+        //initialize formal variable in the function is the same as write a "var e;" with the function
+        function func_5(e) {
+            //if we don't pass e, the alert will be undefined
+            alert(e);
+        }
+        func_5();
+        func_5(e);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

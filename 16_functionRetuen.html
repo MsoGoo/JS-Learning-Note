@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16_functionRetuen</title>
+    <script>
+        //return 设置返回值
+        //return 后语句不执行
+        //return 后面不跟值， 返回undefined
+        //返回值可以是任意类型
+        function sum(a,b,c) {
+            console.log(a + b + c);
+            return a + b + c;
+        }
+
+        var ans = sum(1,2,3);
+        console.log(ans);
+
+        function test_1() {
+            var obj = {
+                name : "name",
+                age : 19
+            }
+
+            return obj;
+        }
+
+        function test_2() {
+            console.log(sum(1,2,3));
+            return sum;
+        }
+
+        var test_3 = test_2();
+        test_3(3,3,3);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

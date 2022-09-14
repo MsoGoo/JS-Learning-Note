@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>13_object(2)</title>
+    <script>
+        var obj_1 = new Object();
+        obj_1.name = "你好";
+        /*
+            js中的变量都是保存到栈内存中。
+                -基本数据类型都是储存在栈中
+                -值和值之间是相互独立的，不会互相影响
+            
+            对象是保存在堆内存中，而对象变量则保存堆的内存地址（对象的引用）。
+                -创建一个新的对象，并将新的对象=旧对象时。 只是将新对象指向的地址指向旧对象的地址。所以会同步信息。
+        */
+
+        //obj_2 不会新创建一块内存，而是引用，所以obj_1 变化时 obj_2会跟着变
+        var obj_2 = obj_1;
+        console.log(obj_1);
+        console.log(obj_2);
+
+        obj_1.name = "ooo";
+        console.log(obj_1);
+        console.log(obj_2);
+
+        
+        var a = new Object();
+        var b = new Object();
+        console.log(a == b);
+        a.name = "123";
+        b.name = "123";
+        console.log(a.name == b.name);
+
+        //用对象字面量来创建对象 ={} 和 = new object() 等价
+        var obj = {};
+        obj.name = "name";
+
+
+        //使用对象字面量可以在创建对象时，直接赋值
+        //特殊属性名要加引号
+        // 属性名和属性值是一组名值对结构 用:连接 ， 隔开
+        var obj_test = {
+            name : "name",
+            age : 15,
+            "123123" : 123123
+        };
+
+        console.log(obj_test);
+
+        //函数也能作为对象的属性
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

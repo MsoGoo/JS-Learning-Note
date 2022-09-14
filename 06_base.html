@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06_base</title>
+    <script>
+        var a = 123;
+        
+        //0x... => 16进制
+        a = 0x10;
+        
+        //0.... =>8进制
+        a = 0102
+
+        //0b... => 二进制，但是浏览器兼容性不好
+        a = 0b0110
+
+        //这种字符串有些会当8进制解析，有些会当成10进制解析
+        a = "070";
+        //parseInt 中的第二个参数来指定进制， 这里8 即8进制
+        a = parseInt(a, 8);
+        console.log(typeof(a));
+        console.log(a);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

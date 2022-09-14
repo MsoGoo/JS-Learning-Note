@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05_variableTransform</title>
+    <script>
+        /* 
+            将一个数据类型，强制转换为别的
+            to_string() 转换为字符串, 不能对undefine 和 null 进行转换
+            String(变量名) 可以将null 和undefined 转换成字符串
+            String() 函数-强制类型转换
+                    对于number 和 boolean, string() 和 tostring() 一样
+        
+            转换成number：
+            方式1：使用Number()
+                - 纯数字 => 转成number
+                - 非纯数字 => Nan
+                - undefined => Nan
+                - "" 空字符串 => 0
+                - null => 0
+                - boolean => true : 1, false : 0
+
+            如果字符串非纯数字， 只想获取数字
+            例： test_5
+                -parseInt() ==> 把一个字符串转成整数
+                -parsefloat() ==> 把一个字符串转换成float
+                这两个方法能将字符串中非数字前的有效数取出
+                例子：
+                    parseInt(123px) = 123
+                    parseInt(123px123) = 123
+                对非string 使用parseInt()或parseFloat()
+                会先将该值转换成string 再操作
+                所以 布尔值会显示Nan
+            
+            Boolean(x) 转成 布尔值
+                除了0 和nan 转成false
+                其他都是true 
+                除了空字符串（"") 是false, 其余的都是true  "false" -> true
+                null -> false
+                undefiend -> false
+                对象也会转换成true
+        */
+
+        var test_1 = 123;
+        console.log(typeof(test_1));
+        test_1 = test_1.toString();
+        console.log(typeof(test_1));
+
+        var test_2 = true;
+        test_2 = test_2.toString();
+        console.log(typeof(test_2));
+
+        var test_3 = "123";
+        console.log(typeof(test_3));
+        test_3 = Number(test_3);
+        console.log(typeof(test_3));
+        console.log(test_3);
+
+        var test_4 = "123aa";
+        console.log(typeof(test_4));
+        test_4 = Number(test_4);
+        console.log(typeof(test_4));
+        console.log(test_4);
+
+        var test_5 = "123px123";
+        test_5 = parseInt(test_5);
+        console.log(typeof(test_5));
+        console.log(test_5);
+
+        var test_6 = "123.123.123px";
+        test_6 = parseFloat(test_6);
+        console.log(typeof(test_6));
+        console.log(test_6);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

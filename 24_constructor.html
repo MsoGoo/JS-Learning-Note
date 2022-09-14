@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>24_constructor</title>
+    <script>
+        /* 
+            use factor method always use object constructor
+            so the all the variable we create are object type, so hard to recognize the types between 2 different object.
+        */
+
+        /* 
+            constructor is the same as other function
+                - capital the initial letter;
+        
+            the difference between constructor function and normal function is:
+                - we can directly call the normal function, but for the constructor function need to use new
+        
+            construction prodecures:
+                1. create a new object
+                2. set this to the new object
+                3. use the new created obj as return value
+                4. execute the code in the function
+        
+        
+            cases of this
+                1. when calling the function, this : window
+                2. when calling the funciton in a obj, this : obj
+                3. when calling the constructor, this is the new variable.  
+        
+        
+        */
+
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        var person_1 = new Person("haha", 18);
+        console.log(person_1);
+        console.log(person_1 instanceof Person);
+
+        //all the objects are the instance of Object;
+        console.log(person_1 instanceof Object); // true
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>22_this</title>
+
+    <script>
+        /* 
+            when parser calls a function, it will pass an hidden parameter(this)
+            this is pointing to the context object(closest object)
+
+            call the function in different obj, "this" represent the different obj
+                        
+        */
+        function func(a, b) {
+            console.log("a = " + a + "b = " + b);
+            console.log(this);
+        }
+
+        func(123, 456);
+
+        var obj = {
+            name : "name",
+            sayName : func
+        }
+
+        obj.sayName();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>25_modifyConstruetor</title>
+
+    <script>
+        /* 
+            in the person constructor, every objects have a method of sayname
+                currently, we just create this function with the constructor, so each time constructor is executed, it will create a new say method.
+                it will waste a lot of memory
+        */
+
+        function fun() {
+            alert("Hello, I am " + this.name);
+        }
+
+        function Person(name, age) {
+            this.name = name,
+            this.age = age,
+            //it waste memory
+            // this.say = function() {
+            //     alert("Hello, I am " + this.name)
+            // }
+            
+            this.say = fun;
+
+        }
+
+        var per_1 = new Person("haha", 18);
+        var per_2 = new Person("what", 16);
+        console.log(per_1.say == per_2.say);
+
+        /* 
+            however, declaring the function in the global function will pollution the global scope namespace;
+            
+            and define in the global scope is not safe. might be overwrite by others.
+        */
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

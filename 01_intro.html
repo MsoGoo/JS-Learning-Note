@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01_intro</title>
+    <!-- js 文件在script 中 -->
+    <script> 
+        // 警示框 alter
+        // alert("First Message")
+
+        //在页面中输出一个内容， 一个网页就是一个文档(document)
+        //document.write可以在body中输出一个内容
+        //document.write("?????")
+        
+        //向控制台输出一个内容
+        // console.log("test")
+
+    </script>
+
+    <!-- 
+        写在外部文件中可以在不同页面中应用，也能利用浏览器的缓存机制
+        推荐使用方式
+        script 一但引入外部标签，就不能再在该标签下编写代码，已引入外部标签的script标签内的代码会被忽略
+        需要创建一个新的标签重新编写。        
+    -->
+    <script src="./script.js">
+        alert("我是内部alter")
+    </script>
+
+    <!-- 
+        1.js 严格区分大小写
+        2.js中的每一条语句;结尾，如果没有添加，浏览器会自动添加但会消耗资源。而且有时候浏览器会错加分号
+        3.js 自动忽略多个空格和换行
+        
+     -->
+</head>
+<body>
+    <!-- 
+        将js代码编写到变迁的onclick 属性中
+        每次点击的时候都会执行一次
+
+        虽然可以卸载标签的属性中，但是输入与结构行为耦合，不推荐使用
+    -->
+    <button onclick="alert('干嘛啊！');">HIT</button>
+    
+    <br><br><br><br><br>
+    <!-- 
+        将超链接卸载href 中
+     -->
+    <a href="javascript:alert('真皮沙发');">你试试？</a>
+    <a href="javascript:;">我真的没反应的</a>
+</body>
+</html>

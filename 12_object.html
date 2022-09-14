@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12_object</title>
+    <script>
+        /*
+            对象分类：
+            1.内建对象
+                -由ES标准中定义的对象， 在任何ES都能实现
+                -比如：math string number boolean function object...
+
+            2. 宿主对象
+                -由js的运行环境提供的对象，目前来讲主要指由浏览器提供的对象。
+                -比如 
+                    BOM : document object model
+                    DOM : browser object model
+                    - console.log 中的console 即一种对象，由浏览器提供
+            
+            3. 自定义对象
+                -由开发人员自己创建
+        */
+
+        //使用new关键词调用的函数（构造函数），用于创建对象
+        var obj = new Object();
+        //在对象中保存的属性为属性值
+        obj.name = "哈哈哈";
+        obj.age = 18;
+        obj.gener = "Male";
+        console.log(obj);
+        console.log(obj.name);
+        //如果读取对象中没有该属性，则返回undefined
+        console.log(obj.what);
+        obj.name = "name";
+        console.log(obj);
+
+        //delete 删除属性
+        delete obj.name;
+        console.log(obj);
+
+        //对象属性名不用完全遵守标识符规范
+        //可以["..."] 的方式添加特殊的属性名, 也要用一样的方式调用
+        //但是你最好还是老实点吧。
+        //使用[]的形式操作更加领过，在[]中可以直接传递一个变量
+        var n = "123";
+        obj["123"] = 789
+        console.log(obj["123"]);
+        console.log(obj[String(122 + 1)]);
+        console.log(obj[n]);
+
+        var obj_1 = new Object();
+        obj_1.objj = obj;
+        obj_1.name = 123222222;
+        console.log(obj_1);
+
+        //in 运算符， 通过该运算符可以检查对象中是否含有指定的属性
+
+        console.log("age" in obj_1);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

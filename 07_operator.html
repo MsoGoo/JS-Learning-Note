@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07_operator</title>
+    <SCript>
+        /*
+            运算符 => 操作符
+            typeof() => 返回 string
+            + - * / %
+            对非number类型的值进行运算时，会将这些变量转换成number再运算
+            任何值 和 nan 做运算都是nan
+            字符串 "+" 能将两个字符串拼接
+            任何值和字符串相加， 都会被转换成字符串，然后拼接
+            利用 +""(加空串) 的特点将任意数据类型 转成string
+
+        */
+
+        var a = 123;
+        var result = typeof(a);
+        
+        console.log(result);
+        console.log(typeof(result));
+
+        console.log(result + 1)
+        console.log(true + 1)
+        console.log(true + false)
+        console.log(1 + null)
+        console.log(1 + NaN)
+        console.log("123" + "345")
+
+        var str = "你好啊，" +
+                   "我想换行。" +
+                   "不行吗？";
+        
+        console.log(str)
+        console.log(true + "hahaha")
+        console.log(null + "hahaha")
+        console.log(NaN + "hahaha")
+        console.log(undefined + "hahaha")
+        console.log(100 - "1a")
+        console.log(2 * null)
+        console.log(2 * undefined)
+        console.log(2 * false)
+        
+        var a = 1;
+        //a++ postfix， ++a prefix
+        //postfix: return the current number, then + 1
+        //+ 1 and return
+        console.log(a++);
+        console.log(++a);
+
+
+
+        //logic operator: !(not) &&(and) ||(or)
+         
+    </SCript>
+</head>
+<body>
+    
+</body>
+</html>

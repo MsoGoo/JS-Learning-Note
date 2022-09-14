@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04_variable</title>
+    <script>
+        /* 
+            基本数据类型：
+            String, Number, Boolean, NULL, undefined
+
+            引用数据类型：
+            object
+
+            字符串可以用双引号也能用单引号，但是要一致
+            例如： var temp = 'he" 不行
+            双引号不能嵌套
+            单引号也不能嵌套
+            混合使用来表陈述
+            或者用\作为转义字符
+            \t ：制表符（tab）
+            \\表斜杠
+        */
+
+        var temp = "hello";
+        var temp_1 = '我说："我说啥？"';
+        var temp_2 = "\t 我说：\"我说啥？\"";
+
+        console.log(temp_1);
+        console.log(temp_2);
+        
+        // 可以用运算符检查变量类型：typeof(变量)
+        var test = 123;
+        var test_1 = "123";
+        console.log(typeof(test));
+        console.log(typeof(test_1));
+        //表示js 中的数字最大值
+        //js中number 整数和浮点数
+        //如果超过最大值，则会返回Infinity
+        //infinity 类型也是number 
+        console.log(Number.MAX_VALUE);
+        var a = Infinity;
+        console.log(typeof(a));
+
+        //不可计算结果返回 NaN ==> not a number
+        //NaN 也是 数字类型
+        var b = "abc" * "bcd";
+        console.log(b);
+
+        //number_min 是大于0 的最小正值，number 中的最小负值
+        // 5e-324
+        //如果使用js进行浮点数，可能会得到不精确的结果
+        //所以尽量避免使用js对精确度要求较高的运算
+        var c = 0.1 + 0.3;
+        console.log(c);
+
+        var bool = true;
+        console.log(typeof(bool));
+        bool = 123;
+        console.log(typeof(bool));
+
+        //null 表示空对象， 类型为object
+        var test_null = null;
+        console.log(typeof(test_null));
+        //undefined 表未定义未向
+        var test_udf = undefined;
+        console.log(typeof(test_udf));
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

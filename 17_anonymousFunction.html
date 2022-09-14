@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>17_anonymousFunction</title>
+    <script>
+
+        //立即执行函数， 在定义完函数后加上()
+        (function() {
+            alert("我是匿名函数");
+        })();
+        
+        var b = (function sum (a, b) {
+            console.log(a + b);
+            alert("我不是匿名函数");
+        })(10, 10);
+
+        console.log(typeof(b)); //undefined
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

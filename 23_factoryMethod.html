@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>23_factoryMethod</title>
+    <script>
+        
+
+        function func(name, age, address) {
+            var obj = new Object();
+            obj.name = name; 
+            obj.age = age; 
+            obj.address = address;
+
+            console.log(typeof(obj));
+            return obj;
+        }
+
+        var people_1 = func("haha", 18, "1234 rd");
+        console.log(people_1);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11_conditionalStatement</title>
+    <script>
+        //if, if-else, if-else if-...-else
+        //switch..case 
+        //如果比较为true 则会从当前case 开始执行后面的所有代码， 即便不满足后面的case。所以要加上break
+        //不满足所有的case 则走default
+
+        var a = "hello"
+        switch(a) {
+            case "hello" :
+                console.log("hello");
+                break;
+            case "world" :
+                console.log("world"); 
+                break;
+            default :
+                console.log("What?");
+                break;
+        }
+
+        //while
+        // var a = 2;
+        // while(a) {
+        //     a--;
+        //     alert(a);
+        // }
+
+        // var b = 5;
+        //do-while
+        // do {
+        //     b++;
+        //     alert(b);
+        // } while(b <= 5)
+        
+        //for
+        for(var b = 0; b < 10; ++b) {
+            if (b % 3 != 0) {
+                continue;
+            }
+            console.log(b);
+        }
+
+        for(; b < 20; ++b) {
+            console.log(b);
+        }
+
+        for(;;++b) {
+            if (b == 22) {
+                break;
+            }
+            console.log(b);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

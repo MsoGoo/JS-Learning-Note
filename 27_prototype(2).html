@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>27_prototype(2)</title>
+    <script>
+        function Person() {
+
+        }
+
+        Person.prototype.name = "prototype name";
+        var test = new Person();
+        
+        //even name is in prototype, still true;
+        console.log("name" in test);    //true
+        
+        //only the object it owns has this element, return true, and doesn't count the elements in the prototype.
+        console.log(test.hasOwnProperty("name")); //false
+        
+        //prototype is also an object, it also has a prototype.
+        //.propotype => calls the constructor's prototype object
+        //__proto__ => calls the prototype of a object
+        console.log(Person.prototype.__proto__.hasOwnProperty("hasOwnProperty"));
+
+        console.log(test.__proto__.__proto__.hasOwnProperty("hasOwnProperty"));
+
+        console.log(test.__proto__.__proto__.__proto__) //null
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
