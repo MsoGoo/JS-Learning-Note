@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>54_mouseMovePractice</title>
+    <style>
+        #box01{
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            var box01 = document.getElementById("box01");
+            
+            window.onmousemove = function(event) {
+                //handle Compatibility problems
+                event = event || window.event;
+                
+                //pageX, pageY. mouse position related to the page
+                //also doesn't support in IE8 & below
+                // var left = event.pageX;
+                // var top = event.pageY;
+                var st = document.body.scrollTop || document.documentElement.scrollTop;
+                var sl = document.body.scrollLeft || document.documentElement.scrollLeft;
+
+                var left = event.clientX;
+                var top = event.clientY;
+                box01.style.left = (left + sl) + "px";
+                box01.style.top = (top + st) + "px";
+            }
+        }
+    </script>
+</head>
+<body style="height: 1000px; width: 2000px;">
+    <div id="box01"> </div>
+</body>
+</html>

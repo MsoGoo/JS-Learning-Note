@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>46_imageSwitch</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer{
+            width: 650px;
+            margin : 50px auto;
+            background-color: rgb(156, 172, 224);
+            text-align: center;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div id = "outer">
+        <p id="Info"> </p>
+        <img src="img/img_1.webp" alt="pixel game">
+        <button id = "prev">Prev</button>
+        <button id = "next">Next</button>
+    </div>
+    
+    <script>
+        var btn_1 = document.getElementById("prev");
+        var btn_2 = document.getElementById("next");
+        var img = document.getElementsByTagName("img")[0];
+
+        var imgs = ["img/img_1.webp","img/img_2.webp","img/img_3.webp","img/img_4.webp","img/img_5.webp"]
+        var curr = 0;
+
+        var info = document.getElementById("Info");
+        info.innerHTML = imgs.length + " pictures in total, now at " + (curr+1); 
+
+        btn_1.onclick = function() {
+            curr--;
+            if (curr < 0) {
+                curr = imgs.length - 1;
+            }
+            img.src = imgs[curr];
+            info.innerHTML = imgs.length + " pictures in total, now at " + (curr+1); 
+        }
+
+        btn_2.onclick = function() {
+            curr++;
+            if (curr > imgs.length - 1) {
+                curr = 0;
+            }
+            img.src = imgs[curr];
+            info.innerHTML = imgs.length + " pictures in total, now at " + (curr+1); 
+        }
+    </script>
+</body>
+</html>

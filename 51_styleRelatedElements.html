@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>51_styleRelatedElements</title>
+
+    <style>
+        #box01{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            padding: 20px;
+            border: 20px solid yellow;
+        }
+
+        #box02{
+            padding: 100px;
+            background-color: gold;
+        }
+
+        #box04{
+            width: 200px;
+            height: 300px;
+            background-color: greenyellow;
+            overflow: auto;
+        }
+
+        #box05{
+            width: 100px;
+            height: 600px;
+            background-color: yellow;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            var box01 = document.getElementById("box01");
+            var box04 = document.getElementById("box04");
+
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function() {
+                
+                /* 
+                    clientWidth
+                    clientHeight
+                        those elements just return the number without "px", can directly used to calculate
+                        those elements are read only! 
+                */
+                //==> width + 2 * padding
+                //alert(box01.clientWidth);
+                //alert(box01.clientHeight);
+                
+
+                /* 
+                    offset width
+                    offset height
+                */
+                //width => width + 2 * border + 2 * padding
+                //alert(box01.offsetWidth);
+                
+
+                /* 
+                    offsetParent
+                        The closest ancestor to the current element with positioning enabled
+
+                        if all ancestor elements haven't enable position, return body
+                */
+                // var op = box01.offsetParent;
+                // alert(op);
+
+                /* 
+                    offsetLeft
+                    offsetTop
+
+                    The (..) offset of the current element relative to its positioned element (offsetParent...)
+
+                */
+                //alert(box01.offsetLeft);
+                
+
+                
+               /*  
+                    scrollWidth
+                    scrollHeight
+
+                    childnode's height exceed the parent's height, scroll is avaliable, get all the height in the scroll area 
+               */
+                //alert(box04.scrollHeight);
+
+                /* 
+                    scrollLeft
+                    scrolltop 
+                        current scroll bar's position
+                */
+                //alert(box04.scrollLeft);
+
+                /* 
+                    when scrollHeight - scrollTop == clientHeight
+                    vertical scroll bar is at the bottom.
+
+                    same concept as vertical scroll bar 
+                */
+            }
+
+        }
+    </script>
+
+
+</head>
+<body>
+    <button id="btn01">Hit</button>
+    <br><br>
+
+    <div id="box04">
+        <div id="box05">
+        </div>
+    </div>
+
+    <br><br>
+    
+    <div id="box03" >
+        <div id="box02" style="position: relative;">
+            <div id="box01"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>55_eventBubbling</title>
+    <style>
+        #box01{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+        }
+
+        #s1{
+            background-color: rgb(124, 124, 197);
+        }
+    </style>
+    
+    <script>
+        window.onload = function() {
+            /* 
+                event bubbling
+                    - event triggered from top to buttom;
+                    - can be cancelled by event object : event.cancelBubble
+            */
+
+            var s1 = document.getElementById("s1");
+            s1.onclick = function(event) {
+                event = event || window.event;
+                event.cancelBubble = true;
+                alert("span click response function");
+            }
+
+            var box01 = document.getElementById("box01");
+            box01.onclick = function(event) {
+                event = event || window.event;
+                event.cancelBubble = true;
+                alert("box01 click response function");
+            }
+
+            document.body.onclick = function() {
+                alert("body click response function");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box01">  
+        I am box01
+        <span id = "s1">
+            I am span
+        </span>
+    </div>
+</body>
+</html>

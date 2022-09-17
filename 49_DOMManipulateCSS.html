@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>49_DOMManipulateCSS</title>
+  <style>
+    #box1 {
+      width: 200px;
+      height: 200px;
+      /* "!important" will make the background-color unchangeable */
+      background-color: rebeccapurple;
+    }
+  </style>
+
+  <script>
+    window.onload = function () {
+      //click the button to change the size of box1
+      var box1 = document.getElementById("box1");
+      var btn1 = document.getElementById("btn01");
+      var btn2 = document.getElementById("btn02");
+
+      btn1.onclick = function() {
+        //The styles set through the style attribute are all inline styles
+        //innerinline styles has higher priority
+        box1.style.width = String(box1.offsetWidth + 10) + "px";
+        box1.style.height = "500px";
+        //if there is '-' in css style name, this name is invalid in JS
+        //box1.style.background-color = "yellow" //invalid
+        //fix : change to CamelCase
+        box1.style.backgroundColor = "blue";
+      }
+
+
+      btn2.onclick = function() {
+        //can only read the inline info. but the value setted by CSS cannot be get by this way 
+        alert(box1.style.width);
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <button id="btn01">change size</button>
+  <button id="btn02">get style</button>
+  <div id="box1">
+
+  </div>
+</body>
+
+</html>

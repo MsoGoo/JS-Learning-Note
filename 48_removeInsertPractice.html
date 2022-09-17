@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>48_removeInsertPractice</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #employeeTable {
+      width: 650px;
+      margin: 50px auto;
+      background-color: rgb(193, 202, 230);
+      text-align: center;
+    }
+
+    #formDiv {
+      width: 650px;
+      margin: auto;
+      background-color: rgb(193, 202, 230);
+      text-align: center;
+    }
+  </style>
+
+  <script>
+
+    function delA() {
+      //after click, delete the current line
+      //get current tr
+      var tr = this.parentNode.parentNode;
+      //ways to get name
+      //var name = tr.getElementsByTagName("td")[0].innerHTML;
+      var name = tr.children[0].innerHTML;
+      if (confirm("confirm to remove " + name + "?")) {
+        tr.parentNode.removeChild(tr);
+      }
+
+      //href in default will jump to a new page
+      //we can return false to cancel this default set
+      //or set it to javascript:;
+      return false;
+    }
+
+    window.onload = function () {
+      var allA = document.getElementsByTagName("a");
+      for (var i = 0; i < allA.length; ++i) {
+        allA[i].onclick = delA;
+      }
+
+      //click delete, remove one of the employee info
+
+
+      //add new employee
+      var btn = document.getElementById("addEmpButton");
+      btn.onclick = function () {
+        //var tr = this.parentNode.parentNode.parentNode;
+        var name = document.getElementById("empName").value;
+        var email = document.getElementById("empemail").value;
+        var salary = document.getElementById("empsalary").value;
+
+        /* 
+          constructure tr
+          sample: 
+            <tr>
+              <td>Tom</td>
+              <td>tom@gmail.com</td>
+              <td>3000</td>
+              <td><a href = "deleteEmp?id=001">Delete</td>
+            </tr>
+        */
+
+        // first way
+        //create tr
+        //     var tr = document.createElement("tr");
+
+        //     //create td
+        //     var nameTD = document.createElement("td");
+        //     var emailTD = document.createElement("td");
+        //     var salaryTD = document.createElement("td");
+        //     var aTd = document.createElement("Td");
+
+        //     //create a
+        //     var a = document.createElement("a");
+
+        //     //context node
+        //     var nameText = document.createTextNode(name);
+        //     var emailText = document.createTextNode(email);
+        //     var salaryText = document.createTextNode(salary);
+        //     var deleteText = document.createTextNode("Delete");
+
+        //     //assign context to td
+        //     nameTD.appendChild(nameText);
+        //     emailTD.appendChild(emailText);
+        //     salaryTD.appendChild(salaryText);
+
+        //     a.appendChild(deleteText);
+
+        //     aTd.appendChild(a);
+
+        //     tr.appendChild(nameTD);
+        //     tr.appendChild(emailTD);
+        //     tr.appendChild(salaryTD);
+        //     tr.appendChild(aTd); 
+
+        //     a.href = "javascript:;";
+        //     a.onclick = delA;
+
+        //     var table = document.getElementById("employeeTable");
+        //     var tableBody = table.getElementsByTagName("tbody")[0];
+        //     tableBody.appendChild(tr);
+        //   return false;
+        // } 
+
+
+        //second way 
+        var tr = document.createElement("tr");
+
+        tr.innerHTML = "<td>" + name + "</td>" +
+          "<td>" + email + "</td>" +
+          "<td>" + salary + "</td>" +
+          "<td><a href ='javascript:;'>Delete</a></td>";
+
+        var a = tr.getElementsByTagName("a")[0];
+        a.onclick = delA;
+
+        var table = document.getElementById("employeeTable");
+        var tableBody = table.getElementsByTagName("tbody")[0];
+        tableBody.appendChild(tr);
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <table id="employeeTable">
+    <colgroup span="4"></colgroup>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Salary</th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    </tr>
+    <tr>
+      <td>Tom</td>
+      <td>tom@gmail.com</td>
+      <td>3000</td>
+      <td><a href="deleteEmp?id=001">Delete</td>
+    </tr>
+    <tr>
+      <td>Barry</td>
+      <td>Barry@gmail.com</td>
+      <td>9000</td>
+      <td><a href="deleteEmp?id=002">Delete</td>
+    </tr>
+    <tr>
+      <td>Lin</td>
+      <td>Lin@gmail.com</td>
+      <td>8000</td>
+      <td><a href="deleteEmp?id=003">Delete</td>
+    </tr>
+  </table>
+
+
+  <div id="formDiv">
+    <h4>Add new employee</h4>
+
+    <table>
+      <tr>
+        <td class="word">name: </td>
+        <td class="inp">
+          <input type="text" name="empName" id="empName" />
+        </td>
+      </tr>
+      <tr>
+        <td class="word">email: </td>
+        <td class="inp">
+          <input type="text" name="email" id="empemail" />
+        </td>
+      </tr>
+      <tr>
+        <td class="word">salary: </td>
+        <td class="inp">
+          <input type="text" name="salary" id="empsalary" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="cente">
+          <button id="addEmpButton" value="abc">
+            Submit
+          </button>
+        </td>
+
+      </tr>
+    </table>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>45_documentLoad</title>
+
+    <script>
+        //because to browser load the document from top to bottom
+        //before we run this line of code, the button is still not loaded. so it's null
+        //write the js code on the bottom, can make sure run the js code after load the web.
+        //or we can use onload event
+        //onload event will execute after the web loaded. to make sure that All the DOM object is loaded before we run the js code. 
+        window.onload = function() {
+            var btn = document.getElementById("btn");
+
+            //DOM quety
+
+            //id is unique
+            document.getElementById();
+
+            //like h1, h2, div
+            document.getElementsByTagNameNS();
+
+            document.getElementsByClassName();
+        }
+        
+    </script>
+
+</head>
+<body>
+    <button id = "btn"> Button </button>
+    
+</body>
+</html>

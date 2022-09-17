@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>43_DOM</title>
+
+</head>
+<body>
+    <button id = "btn"> It a button </button>
+    <div id = "box1">
+        <div id = "inner">
+            inner
+        </div>
+    </div>
+    <div id = "box1"> outter div1</div>
+
+    <div id = "box2"> outer div2</div>
+    
+    <button id = "create LI">create LI after div</button>
+    <button id = "create LI before">create LI before div</button>
+    <button id = "replace"> replace the outer div2</button>
+    </div>
+    <script>
+          
+        /*
+            Document Object Model
+                Node : the most basic unit of html document
+                    - document node  --> the whole page
+                    - element node
+                    - attribute node
+                    - text node
+
+                    <p     id - 'PId'>              This is a p </p>
+                        |attribute node| <-----text node----->|
+                    |                        element node           |
+        
+            browser already provide a ducument node object (window object elements)
+        
+        */
+        
+
+        //DOM query
+        //console.log(document);
+        
+        //get the button object
+        var btn_1 = document.getElementById("btn");
+        console.log(btn_1);
+        btn_1.innerHTML = "new Name"
+        console.log(btn_1);
+        
+        //get body
+        var body = document.body;
+        console.log(body);
+
+        //get html
+        var html = document.documentElement;
+        console.log(html);  //undefined
+
+        //get all elements
+        var all = document.all;
+        console.log(all);
+
+        //second way to get all elements
+        var all = document.getElementsByTagName("*");
+        console.log(all);
+        
+        //get box1
+        //byclassname doesn't suppory ie8 or below
+        var box1 = document.getElementsByClassName("box1");
+        
+        // get all div
+        var divs = document.getElementsByTagName("div");
+
+        //select elements by css selector
+        //document.querySelector()
+        //use string of css selector as actual parameter
+        //if several elements match the requerements. return the first one
+        var div = document.querySelector("div div");
+        console.log(div);
+        var div = document.querySelector(".box1 div");
+        
+
+        //if several elements match the requerements. return all
+        //return type is array
+        var box1 = document.querySelectorAll(".box1");
+
+
+
+
+        /* 
+            use DOM to change the document
+        */
+
+        //create li element node named "hello" under div(id = box1)
+        var btn = document.getElementById("create LI");
+        btn.onclick = function() {
+            var li = document.createElement("li");
+            var hello_TXT = document.createTextNode("hello");
+            li.appendChild(hello_TXT);
+            var div = document.getElementById("box1");
+            div.appendChild(li);
+        }
+
+        //create li element node named "hello" before div(id = inner)
+        var btn_1 = document.getElementById("create LI before");
+        btn_1.onclick = function() {
+            var li = document.createElement("li");
+            var hello_TXT = document.createTextNode("hello");
+            li.appendChild(hello_TXT);
+            //div(id = box1)  is the parents node of div(id = inner)
+            var div = document.getElementById("box1");
+            var div_in = document.getElementById("inner");
+            //grammar: parentNode.insertBefore(newNode, prevNode);
+            div.insertBefore(li, div_in);
+        }
+
+        //replace the outer div2
+        var check = true;
+        var btn_2 = document.getElementById("replace");
+        btn_2.onclick = function() {
+            if (check) {
+                var div = document.createElement("div");
+                var txt = document.createTextNode("it's a new div");
+                div.appendChild(txt);
+                
+                var body = document.body;
+                var div_pre = document.getElementById("box2")
+                //grammar: parentNode.insertBefore(newNode, prevNode);
+                body.replaceChild(div, div_pre);
+                check = false;
+            }
+        }
+
+
+    </script>
+</body>
+</html>

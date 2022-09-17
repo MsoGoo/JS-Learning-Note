@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>48_codePart</title>
+    <script>
+        //delete elements;
+        function deleteA() {
+            var tr = this.parentNode.parentNode;
+            var name = tr.children[0].innerHTML;
+            if (confirm("Do you sure you want to delete " + name + "?")) {
+                tr.parentNode.removeChild(tr);
+            }
+            return false;
+        }
+
+        window.onload = function() {
+            var arr = document.getElementsByTagName("a");
+            for (var i = 0; i < arr.length; ++i) {
+                arr[i].onclick = deleteA;
+            }
+
+            var submit = document.getElementById("addEmpButton");
+            submit.onclick = function() {
+                var name = document.getElementById("empName").value;
+                var email = document.getElementById("empemail").value;
+                var salary = document.getElementById("empsalary").value;
+                
+                //create tr
+                var tr = document.createElement("tr");
+                tr.innerHTML += "<th>" + name + "</th>" +
+                                "<th>" + email + "</th>" +
+                                "<th>" + salary + "</th>" + 
+                                "<th><a href='javascript:;''>Delete</th>";
+
+                var a = tr.getElementsByTagName("a")[0];
+                a.onclick = deleteA;
+                
+                var table = document.getElementById("employeeTable");
+                var tableBody = table.getElementsByTagName("tbody")[0];
+                tableBody.appendChild(tr);
+                
+            }
+        }
+    </script>
+</head>
+<body>
+    <body>
+        <table id="employeeTable">
+          <colgroup span="4"></colgroup>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          </tr>
+          <tr>
+            <td>Tom</td>
+            <td>tom@gmail.com</td>
+            <td>3000</td>
+            <td><a href="javascript:;">Delete</td>
+          </tr>
+          <tr>
+            <td>Barry</td>
+            <td>Barry@gmail.com</td>
+            <td>9000</td>
+            <td><a href="javascript:;">Delete</td>
+          </tr>
+          <tr>
+            <td>Lin</td>
+            <td>Lin@gmail.com</td>
+            <td>8000</td>
+            <td><a href="javascript:;">Delete</td>
+          </tr>
+        </table>
+      
+      
+        <div id="formDiv">
+          <h4>Add new employee</h4>
+      
+          <table>
+            <tr>
+              <td class="word">name: </td>
+              <td class="inp">
+                <input type="text" name="empName" id="empName" />
+              </td>
+            </tr>
+            <tr>
+              <td class="word">email: </td>
+              <td class="inp">
+                <input type="text" name="email" id="empemail" />
+              </td>
+            </tr>
+            <tr>
+              <td class="word">salary: </td>
+              <td class="inp">
+                <input type="text" name="salary" id="empsalary" />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" align="cente">
+                <button id="addEmpButton" value="abc">
+                  Submit
+                </button>
+              </td>
+      
+            </tr>
+          </table>
+        </div>
+</body>
+</html>

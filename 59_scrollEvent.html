@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>59_scrollEvent</title>
+    <style>
+        #box01{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+
+        body{
+            height: 2000px;
+        }
+    </style>
+    
+    <script>
+        window.onload = function() {
+            //when mouse scroll down, box 1 getting longer;
+            //opposite for scrollup;
+            var box01 = document.getElementById("box01");
+            
+            resize(box01);
+        }
+
+        function resize(obj) {
+            obj.onwheel = function(event) {
+                //scroll up: 120, scroll down: -120;
+                if (event.wheelDelta > 0) { 
+                    if(obj.clientHeight > 100) {
+                        obj.style.height = obj.clientHeight - 10 + "px";
+                    }
+                    
+                } else {
+                    if(obj.clientHeight < 1000) {
+                        obj.style.height = obj.clientHeight + 10 + "px";
+                    }
+                }
+
+                return false;
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <div id="box01"></div>
+</body>
+</html>

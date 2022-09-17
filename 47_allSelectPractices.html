@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>47_allSelectPractices</title>
+    <script>
+        var items = document.getElementsByName("items");
+        window.onload = function() {
+            //1. #checkAllBtn  
+            //after press the button, select all the boxes
+            var checkAllBtn = document.getElementById("checkAllBtn");
+            checkAllBtn.onclick = function() {
+                for (var i = 0; i < items.length; ++i) {
+                    items[i].checked = true;
+                }
+            }
+
+            //2. #checkNoneBtn  
+            //after press the button, select none of the boxes
+            var checkNoneBtn = document.getElementById("checkNoneBtn");
+            checkNoneBtn.onclick = function() {
+                for (var i = 0; i < items.length; ++i) {
+                    items[i].checked = false;
+                }
+            }
+
+            //3. #checkOpposite  
+            //after press the button, make opposite selection
+            var checkOpposite = document.getElementById("checkOpposite");
+            checkOpposite.onclick = function() {
+                for (var i = 0; i < items.length; ++i) {
+                    items[i].checked = !items[i].checked;
+                }
+            }
+
+            //4. #Submit  
+            //after press the button, pop out the current selection
+            var Submit = document.getElementById("Submit");
+            Submit.onclick = function() {
+                var values = "";
+                for (var i = 0; i < items.length; ++i) {
+                    if (items[i].checked == true) {
+                        values += items[i].value + " ";
+                    }
+                }
+                alert(values);
+            }
+         }
+    </script>
+</head>
+<body>
+    <form action= "" method= "post">
+        sports you like: 
+        <br>
+        <input type= "checkbox" name = "items" value = "Football"/>Football
+        <input type= "checkbox" name = "items" value = "Basketball"/>Basketball
+        <input type= "checkbox" name = "items" value = "Table Tennies"/>Table Tennies
+        <input type= "checkbox" name = "items" value = "Badminton"/>Badminton
+        <br>
+        <input type= "button" id= "checkAllBtn" value = "Select All"/>
+        <input type= "button" id= "checkNoneBtn" value = "Select None"/>
+        <input type= "button" id= "checkOpposite" value = "Opposite"/>
+        <input type= "button" id= "Submit" value = "Submit"/>
+
+    </form>
+
+
+</body>
+</html>

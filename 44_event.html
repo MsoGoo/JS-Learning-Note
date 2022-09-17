@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>44_event</title>
+
+</head>
+<body>
+    <button id = "btn"> It's a button </button>
+
+    <script>
+        /* 
+            event ： moment of interaction
+                -mouse move, click, close window....
+            
+            we can set up some JS code in the corresponding event.
+            
+        */
+
+        //bind a function with the corresponding event, when the event is triggered, run the function
+        var btn = document.getElementById("btn");
+    
+        btn.onclick = function() {
+            alert("Don't click!");
+        }
+
+        
+        
+    </script>
+</body>
+</html>

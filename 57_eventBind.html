@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>57_eventBind</title>
+    <script>
+        window.onload = function() {
+            var btn01 = document.getElementById("btn01");
+            // btn01.onclick = function(){ 
+            //     alert("1");
+            // }
+
+            // //this function overwrite the first one
+            // btn01.onclick = function(){ 
+            //     alert("2");
+            // }
+            
+
+            //---------------------------------------------------------------
+            /* 
+                addEventListener
+                    -this method can also bind a function for an element
+                        - parameter 1: string of event, Note: remove on
+                        - parameter 2: callback function
+                        - whether to trigger during capture phase
+                this method can bind several same response function for an element
+                
+                doesn't support ie8 or below browser
+            */
+            btn01.addEventListener("click", function(){
+                alert("1");
+            }, false);
+
+            btn01.addEventListener("click", function(){
+                alert("2");
+            }, false);
+
+
+            //---------------------------------------------------------------
+            /* only in ie 8 or below */
+            // btn01.attachEvent("onclick", function(){
+            //     alert("1");
+            // }, false);
+        }
+
+
+        /* 
+            paramater:
+                1. event object;
+                2. event string(without on)
+                3. callback function
+            
+            note: 
+            In addEventListen, this ptr is the object which binds the event
+            In attachEvent, this ptr is window
+        */
+
+        function bind(obj, eventStr, callback) {
+            if(obj.addEventListener) {
+                obj.addEventListener(eventStr, callback , false);
+            } else {
+                obj.attachEvent("on" + eventStr, callback);
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01">button</button>
+</body>
+</html>

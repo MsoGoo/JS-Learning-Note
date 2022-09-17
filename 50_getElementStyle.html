@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50_getElementStyle</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            padding: 0%;
+        }
+
+    </style>
+
+    <script>
+        window.onload = function(){ 
+            var box1 = document.getElementById("box1");
+            var btn = document.getElementById("btn01");
+            btn.onclick = function() {
+                //can only get inline style
+                //alert(box1.style.width);
+
+                //get the currently displayed style
+                //only IE support it
+                //alert(box1.currentStyle.width)
+
+                /* 
+                    use get computedStyle() to get the current style
+                    this method is window's methos, can directly use it
+                    support ie9+ browser
+                    need 2 parameters
+                        - element
+                        - pseudo element or null
+                    this method will return an object, this object encapsulate the current element's corresponding style.
+
+                    this method will return the real value, not auto.
+                
+                    doesn't support ie8 or below
+                */
+                // var obj = getComputedStyle(box1, null);
+                // alert(obj.width);
+                
+                var obj = getStyle(box1, "width");
+                alert(obj);
+
+
+
+            }
+            
+            /* 
+                parameters:
+                    - obj
+                    - style name
+            */
+            function getStyle(obj, name) {
+                //compatible
+                if(window.getComputedStyle) {
+                    // return getComputedStyle(obj, null)[name];
+                    return getComputedStyle(obj, null)[arguments[1]]
+                } else {
+                    return obj.currentStyle[name];
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <button id="btn01">Hit</button>
+    <br><br>
+    <div id="box1"></div>
+</body>
+</html>

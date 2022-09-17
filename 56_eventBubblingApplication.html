@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>56_eventBubblingApplication</title>
+
+    <script>
+        window.onload = function() {
+            var alist = document.getElementsByTagName("a");
+            // for (var i = 0; i < alist.length; ++i) {
+            //     alist[i].onclick = function() {
+            //         alert("hello");
+            //     };
+            // }
+
+            // var btn = document.getElementById("btn");
+            // var ul = document.getElementById("ul");
+
+            // btn.onclick = function() {
+            //     var li = document.createElement("li");
+            //     li.innerHTML = "<a href='javascript:;'>Link_" + 
+            //                     (alist.length + 1) + 
+            //                     "</a>";
+
+            //     ul.appendChild(li);
+            // }
+
+            //only bond once to create onclick event for all <a></a>;
+            //because <a> is ul's ancestor element, based on the event bubbling function. Once we bind onclick function on ul, all it's child elements will also bind onclick function
+            //event delegation (based on event bubbling)
+
+            
+            var ul = document.getElementById("ul");
+
+            ul.onclick = function(event) {
+                if (event.target.className == "Link"){
+                    alert("hello");
+                }
+            }
+
+            btn.onclick = function() {
+                var li = document.createElement("li");
+                li.innerHTML = "<a href='javascript:;' class = 'Link'>Link_" + 
+                                (alist.length + 1) + 
+                                "</a>";
+                ul.appendChild(li);
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn">Add Link</button>
+
+    <ul id = "ul">
+        <li><a href="javascript:;" class = 'Link'>Link_1</a></li>
+        <li><a href="javascript:;" class = 'Link'>Link_2</a></li>
+        <li><a href="javascript:;" class = 'Link'>Link_3</a></li>
+        <li><a href="javascript:;" class = 'Link'>Link_4</a></li>
+        <li><a href="javascript:;" class = 'Link'>Link_5</a></li>
+    </ul>
+</body>
+</html>
