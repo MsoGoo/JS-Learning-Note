@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>61_navigator&BOM</title>
+    <script>
+        /*
+            BOM 
+                - browser object model
+                - use JS doing manipulations on browsers
+                - BOM objects:
+                    window
+                        - browser window, also the global object in web
+                    navigator
+                        - burrent brower's info. use to recognize different browsers
+                    location
+                        - address bar information
+                    higtory
+                        - browser history
+                            due to the privacy reason, this object cannot  get the detailed history record
+                            Can only control the browser to go back to the previous page or the next page
+                    screen
+                        - get the monitor's related info
+        */
+
+        // console.log(window);
+        // console.log(window.navigator);
+        // console.log(location)
+        // console.log(history);
+
+        /* 
+            navigator
+                due to the historical reason, most of the elements in navigator cannot help use to recognize browsers info
+                - normally use userAgent to identify browsers info
+                    - useAgent is a string
+        */
+        console.log(navigator.appName);
+        console.log(navigator.userAgent);
+
+        if (/Chrome/g.test(navigator.userAgent) == true) {
+            console.log("yes");
+        }
+
+        //if we cannot identify the browser's info. we can use unique element to identify. In example, activeXObject element(only IE browsers have this element.)
+            //ie11 does have activexobject, but set the it into false...
+        // if(window.ActiveXObject) {
+        //     alert("Hello IE");
+        // }
+
+        if("ActiveXObject" in window) {
+            alert("Finall. IE")
+        }
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>64_timer</title>
+
+    <script>
+        window.onload = function () {
+            var count = document.getElementById("count");
+
+            /* 
+                every few time period run the function once
+                parameter : 
+                    - callback function
+                    - time interval(unit : second)
+                
+                return value : number : unique ID for this timer
+            */
+
+            var number = 1;
+            var timer = setInterval(function(){
+                count.innerHTML = number;
+                number += 1;
+                if (number == 21) {
+                    clearInterval(timer);   
+                }
+            }, 100)
+
+            
+        }
+    </script>
+
+</head>
+<body>
+    <h1 id="count">1</h1>
+</body>
+</html>

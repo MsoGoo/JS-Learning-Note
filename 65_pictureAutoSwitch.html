@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>65_pictureAutoSwitch</title>
+
+    <script>
+        window.onload = function() {
+            var btn01 = document.getElementById("btn01");
+            var img = document.getElementsByTagName("img")[0];
+            var imgs = ["./img/img_1.webp",
+                        "./img/img_2.webp",
+                        "./img/img_3.webp",
+                        "./img/img_4.webp",
+                        "./img/img_5.webp",]
+            var timer;
+            var bool = false;
+
+            btn01.onclick = function() {
+                //make sure only 1 timer is running currently
+                clearInterval(timer);
+
+                var idx = 0;
+                timer = setInterval(function(){
+                    img.src = imgs[idx];
+                    idx++;
+                    // if (idx == 5) {
+                    //     idx = 0;
+                    // }
+                    idx = idx % imgs.length;
+                },300);
+            };
+
+            var btn02 = document.getElementById("btn02");
+            btn02.onclick = function() {
+                //if timer is undefined, won't pop error.
+                clearInterval(timer);
+            };
+        }
+    </script>
+
+
+</head>
+<body>
+    <img src="./img/img_1.webp" alt="picture">
+    <br>
+    <button id="btn01">ROLL!</button>
+    <button id="btn02">STOP!</button>
+
+</body>
+</html>

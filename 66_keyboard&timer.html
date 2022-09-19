@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>66_keyboard&timer</title>
+    <style>
+        #box01{
+            height: 100px;
+            width: 100px;
+            background-color: aqua;
+            position: absolute;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            //set a timer to control the movement of div
+            var box01 = document.getElementById("box01");
+            
+            // document.onkeydown = function(event) {
+            //     console.log(event.keyCode);
+            // }
+
+            var dir = 0;
+            document.onkeydown = function(event) {
+                switch(event.keyCode) {
+                    case 87: 
+                        dir = 1;
+                        break;
+                    case 83:
+                        dir = 2;
+                        break;
+                    case 65:
+                        dir = 3;
+                        break;
+                    case 68:
+                        dir = 4;
+                        break;
+                }
+            }
+            
+            document.onkeyup = function() {
+                dir = 0;
+            }
+
+            var speed = 10;
+
+            var timer = setInterval(function(){
+                switch(dir) {
+                    case 1: 
+                        box01.style.top = (box01.offsetTop - speed) + "px";
+                        break;
+                    case 2:
+                        box01.style.top = (box01.offsetTop + speed) + "px";
+                        break;
+                    case 3:
+                        box01.style.left = (box01.offsetLeft - speed) + "px";
+                        break;
+                    case 4:
+                        box01.style.left = (box01.offsetLeft + speed) + "px";
+                        break;
+                }
+            }, 10)
+            
+        }
+    </script>
+        
+</head>
+<body>
+    <div id="box01"></div>
+</body>
+</html>

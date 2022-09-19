@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>62_test02History</title>
+
+    <script>
+        //due to the current page, how many pages we visited before
+        window.onload = function() {
+            var btn = document.getElementById("btn01");
+            btn.onclick = function() {
+                //alert(history.length);
+                //history.back();
+                //history.forward() 
+                history.go(1);  // 1 : go foward 1 page, 2 : forward 2 page
+                                // -1 : go back 1 page, -2 : go back 2 page
+                                
+            }
+        }
+    </script>  
+
+</head>
+<body>
+    <h1>History</h1>
+    <button id="btn01">Click</button>
+</body>
+</html>

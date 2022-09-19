@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>60_keyBoardEvent</title>
+    <style>
+        #box01{
+            height: 100px;
+            width: 100px;
+            background-color: aqua;
+            position: absolute;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            /* 
+                keyboard event
+                    - on keydown
+                    - on keyup
+                
+                keycode
+                    - the current pressed key's ascii code
+            */
+            
+            // document.onkeydown = function(event) {
+            //     console.log(event.keyCode);
+            // }
+
+            /* 
+                altkey
+                ctrlkey
+                shiftkry
+                    check if alt, ctrl, shift key is pressed
+            */
+
+            document.onkeydown = function(event) {
+                //ctrl + a
+                if(event.keyCode == 65 && event.ctrlKey) {
+                    console.log("Yes");
+                }
+            }
+
+            var input = document.getElementsByTagName("input")[0];
+            
+            //in input tag, defautl bahavior is when key is pressed input it into the textbar, retuan false means input nothing into the context bar
+            input.onkeydown = function(event) {
+                if(event.keyCode >= 48 && event.keyCode <= 57) {
+                    return false;
+                }
+            }
+
+            var box01 = document.getElementById("box01");
+            document.onkeydown = function(event) {
+                var speed = 20;
+                if(event.ctrlKey) {
+                    speed = 50;
+                } else {
+                    speed = 20;
+                }
+
+                switch(event.keyCode) {
+                    case 87: 
+                        box01.style.top = (box01.offsetTop - speed) + "px";
+                        break;
+                    case 83:
+                        box01.style.top = (box01.offsetTop + speed) + "px";
+                        break;
+                    case 65:
+                        box01.style.left = (box01.offsetLeft - speed) + "px";
+                        break;
+                    case 68:
+                        box01.style.left = (box01.offsetLeft + speed) + "px";
+                        break;
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <input type="text">
+
+    <div id="box01"></div>
+</body>
+</html>
