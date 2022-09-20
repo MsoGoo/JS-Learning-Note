@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>71_secondaryMenu</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        a,img {
+            border: 0;
+            text-decoration: none;
+        }
+
+        body{
+            font: 12px/180% Arial, Helvetica, sans-serif;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="./71_support.css"/>
+    <script src="./Tools.js"></script>
+    <script>
+        window.onload = function() {
+            var menuSpan = document.querySelectorAll(".menuSpan");
+            var openDiv = menuSpan[0].parentNode;
+
+            for (var i = 0; i < menuSpan.length; i++) {
+                menuSpan[i].onclick = function() {
+                    var parentDiv = this.parentNode;
+                    toggleMenu(parentDiv);
+
+                    //after expand the current menu, collapse previous menu
+                    if(parentDiv != openDiv && !hasClass(openDiv, "collapsed")) {
+                        //now toggle class don't need remove function
+                        toggleMenu(openDiv)
+                        openDiv = parentDiv;
+                    }
+               }
+            }
+        }
+
+
+        function toggleMenu(obj) {
+            var begin = obj.offsetHeight;
+            toggle(obj, "collapsed");
+            var end = obj.offsetHeight; 
+            obj.style.height = begin + "px";
+            move(obj, "height", end, 10, function(){
+                //remove the inline style 
+                obj.style.height = "";
+            });
+        }
+    </script>
+    
+</head>
+<body>
+     <div id="menu" class="sdmenu">
+        <div>
+            <span class="menuSpan">Tools</span>
+            <a href="#">????????????????</a>
+            <a href="#">????????????????</a>
+            <a href="#">????????????????</a>
+            <a href="#">????????????????</a>
+        </div>
+        <div class="collapsed">
+            <span class="menuSpan">support</span>
+            <a href="#">donate donate donate</a>
+            <a href="#">donate donate donate</a>
+            <a href="#">donate donate donate</a>
+            <a href="#">donate donate donate</a>
+        </div>
+        <div class="collapsed">
+            <span class="menuSpan">cooperate</span>
+            <a href="#">????????????????</a>
+            <a href="#">????????????????</a>
+            <a href="#">????????????????</a>
+        </div>
+        <div class="collapsed">
+            <span class="menuSpan">TestBar</span>
+            <a href="#">Test Test Test Test Test Test</a>
+            <a href="#">Test Test Test Test Test Test</a>
+            <a href="#">Test Test Test Test Test Test</a>
+        </div>
+     </div>
+</body>
+</html>

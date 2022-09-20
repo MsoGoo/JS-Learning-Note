@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>72_JASON</title>
+    <script>
+        /* 
+            JSON=
+                - Javascript object notation
+                    -JSON and JS object format are the same
+                    -In JSON string, elements name have to add ""
+                - JSON is a unique format of string, this string can be recognized by other language
+                    can be transferd to other language's object. In development, JSON is used to data interaction 
+                - types 
+                    -object : {}
+                    -array : []
+
+                data types allowed in JSON:
+                    1.string 
+                    2.number
+                    3.boolean
+                    4.null
+                    5.object
+                    6.array
+                function related types are not allowed!!!!!!!!!!!
+        */
+        var obj = '{"name" : "hh", "age" : 18, "gender" : "male"}';
+        var arr = '[123,123,123,"123","123"]'
+
+
+
+        /* 
+            transform JSON string into js object
+                -JS provide a tool class, named JSON
+                -use this object to transform JSON to js object, or the opposite.
+        */
+        //console.log(JSON);
+
+        //json -> js object
+        var json = '{"name" : "hh", "age" : 18, "gender" : "male"}';
+        var temp = JSON.parse(json);
+        console.log(temp);
+
+        // js object ->JSON
+        var temp = JSON.stringify(temp);
+        console.log(temp);
+
+        /* 
+            in ie7 or below, JSON doesn't support
+
+            eval()
+                - this function can execute a stringify JS code, and return the result
+                - if the stringify JS code include {}, will treat {} as code block;
+                    -it doesn't want to parse it as code block, need to () the string
+                - the performance of eval is bad, and it has safety hazards
+        */
+        var str2 = "alert('hello');"
+        //temp = eval("(" + json + ")");
+        console.log(temp);
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

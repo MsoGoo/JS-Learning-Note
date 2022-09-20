@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>70_classOperation</title>
+    <style>
+        .b1 {
+            height: 100px;
+            width: 100px;
+            background-color: red;
+        }
+
+        .b2 {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(206, 219, 83);
+        }
+    </style>
+
+    <script>
+        window.onclick = function () {
+            var box01 = document.getElementById("box01");
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+
+            btn01.onclick = function () {
+                /* 
+                    every time use the style element to modify the style, the browser will need to re-render the page once.
+                        - when we use this way to modify the style various times, will cost a lot of resources
+                
+                    those 3 lines of code will require the browser to re-render 3 times.
+                        box.style.width = "200px";
+                        box.style.height = "200px";
+                        box.style.top = "200px";
+                */
+
+                /* 
+                    we can change the element's class to indirectly change the style
+                        - Change multiple styles in one render
+                        - style and behavior can be further separated
+                */
+                addClass(box01, "b2");
+            }
+ 
+            btn02.onclick = function() {
+                toggle(box01, "b2");
+            }
+        }
+
+
+            /* 
+                parameters:
+                    -the object needed to add class.
+                    -cn : class name to be added
+
+            */
+            function toggle(obj, cn) {
+                if (hasClass(obj, cn)) {
+                    removeClass(obj,cn);
+                } else {
+                    addClass(obj, cn);
+                }
+            }
+
+            function addClass(obj, cn) {
+                if (!hasClass(obj, cn)) {
+                    obj.className += " " + cn;
+                }
+            }
+
+            function removeClass(obj, cn) {
+                // //first way
+                // if (hasClass(obj, cn)) {
+                //     obj.className = obj.className.replace(cn, "");
+                // }
+
+                //second way
+                var reg = new RegExp("\\b" + cn + "\\b");
+                obj.className = obj.className.replace(reg, "");
+            }
+
+            //check if the object in clude this class or not
+            function hasClass(obj, cn) {
+                var reg = new RegExp("\\b" + cn + "\\b");
+                return reg.test(obj.className);
+            }
+    </script>
+</head>
+
+<body>
+    <button id="btn01">click to change the box style</button>
+    <br></br>
+    <br></br>
+    <div id="box01" class="b1"></div>
+    <button id="btn02">toggle</button>
+
+</body>
+
+</html>

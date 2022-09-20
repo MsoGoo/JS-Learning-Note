@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>68_timerApplication</title>
+    <style>
+        #box01{
+            height: 100px;
+            width: 100px;
+            background-color: aqua;
+            position: absolute;
+        }
+
+        #box02{
+            height: 100px;
+            width: 100px;
+            top : 300px; 
+            background-color: red;
+            position: absolute;
+        }
+
+        #box03{
+            height: 100px;
+            width: 100px;
+            top : 550px; 
+            background-color: greenyellow;
+            position: absolute;
+        }
+
+        *{
+            padding: 0px;
+            margin: 0;
+        }
+        
+        #btn01{
+            left:0px;
+            top: 200px;
+            position: absolute;
+        }
+        #btn02{
+            left: 200px;
+            top: 200px;
+            position: absolute;
+        }
+
+        #btn03{
+            left:0px;
+            top:250px;
+            position: absolute;
+        }
+
+        #btn04{
+            left: 200px;
+            top: 250px;
+            position: absolute;
+        }
+
+        #btn05{
+            left: 0px;
+            top: 500px;
+            position: absolute;
+        }
+    </style>
+    <script src="./Tools.js"></script>
+
+    <script>
+        window.onload = function() {
+            var box01 = document.getElementById("box01");
+            var box02 = document.getElementById("box02");
+            var box03 = document.getElementById("box03");
+
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+
+            var btn03 = document.getElementById("btn03");
+            var btn04 = document.getElementById("btn04");
+
+            btn01.onclick = function() {
+                move(box01, "left", 600, 30, function(){});
+            }
+
+            btn02.onclick = function() {
+                move(box01, "left", 0, 30, function(){})
+            }
+
+            btn03.onclick = function() {
+                move(box02, "left", 600, 30);
+            }
+
+            btn04.onclick = function() {
+                move(box02, "left", 0, 30)
+            }
+
+            var btn05 = document.getElementById("btn05");
+            btn05.onclick = function() {
+                move(box03, "width", 800, 30, function(){
+                    move(box03, "height", 300, 30, function(){
+                        move(box03, "width", 100, 30, function(){
+
+                        })
+                    })
+                })
+            }
+        }
+
+        
+    </script>
+</head>
+<body>
+    <div id="box01"></div>
+    <button id="btn01">move box01 right</button>
+    <button id="btn02">move box01 left</button>
+
+    <div id="box02"></div>
+    <button id="btn03">move box02 right</button>
+    <button id="btn04">move box02 left</button>
+
+    <button id="btn05">test</button>
+    <div id="box03"></div>
+
+</body>
+</html>

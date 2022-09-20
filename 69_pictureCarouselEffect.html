@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>69_pictureCarouselEffect</title>
+    <style>
+        *{
+            margin : 0px;
+            padding: 0px;
+        }
+
+        #outer{
+            width: 660px;
+            height: 510px;
+            margin: 10px auto;
+            background-color: pink;    
+            position: relative;  
+            overflow: hidden;
+        }
+
+        #imgList {
+            list-style: none;
+            position: absolute;
+            left: px;
+        }
+
+        #imgList li{
+            margin: 5px 5px;
+            float: left;
+        }
+
+        #navDiv{
+            position: absolute;
+            bottom: 30px;
+            left: 260px;
+        }
+
+        #navDiv a{
+            float: left;
+            background-color: rgb(119, 119, 223);
+            width: 20px;
+            height: 20px;
+            margin: 0 5px;
+        }
+
+        #navDiv a:hover{
+            background-color: palegreen;
+        }
+
+    </style>
+
+    <script src="./moveTool.js"></script>
+
+    <script>
+        window.onload = function() {
+            //set the imglist width;
+            var imgList = document.getElementById("imgList");
+            var imgs = document.getElementsByTagName("img");
+            imgList.style.width = (imgs.length * 660) + "px";
+        
+            //set navButton center
+            var navDiv = document.getElementById("navDiv");
+            var outer = document.getElementById("outer");
+            navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2 + "px";
+            
+            var index = 0;
+            var allA = document.getElementsByTagName("a");
+            //var preColor = allA[index].style.backgroundColor  //first way to set 'a' tags color after click
+            allA[index].style.backgroundColor = "palegreen";
+
+            //set hyper link click function
+            for (var i = 0; i < allA.length; ++i) {
+                allA[i].number = i;
+                allA[i].onclick = function() {
+                    //click has higher priority of auto Swipe
+                    clearInterval(timer);
+
+                    //allA[index].style.backgroundColor = preColor; //first way to set 'a' tags color after click
+                    index = this.number;
+                    //imgList.style.left = (-660 * index) + "px";
+                    move(imgList, "left", -660 * index, 50, function(){
+                        //animate ended, start the auto swipe
+                        autoSwipe();
+                    })
+                    setA();
+
+                }
+            }
+
+            //second way to set 'a' tags color after click
+            function setA() {
+                if(index == imgs.length - 1) {
+                    index = 0;
+                    imgList.style.left = "0px";
+                }
+
+                for(var i = 0; i < allA.length; ++i) {
+                    allA[i].style.backgroundColor = "";     //after set the inline backgroundcolor into "", go get the style in css
+                }
+                allA[index].style.backgroundColor = "palegreen";
+            }
+
+            var timer;
+            autoSwipe();
+            //Swipe pictures function
+            function autoSwipe() {
+                timer = setInterval(function() {
+                    index++;
+                    index %= imgs.length;
+                    //imgList.style.left = (-660 * index) + "px";
+                    move(imgList, "left", -660 * index, 30, function(){
+                        setA();
+                    })
+                }, 2000)
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="outer">
+        <ul id="imgList">
+            <li><img src="img/img_1.webp" alt="picture"></li>
+            <li><img src="img/img_2.webp" alt="picture"></li>
+            <li><img src="img/img_3.webp" alt="picture"></li>
+            <li><img src="img/img_4.webp" alt="picture"></li>
+            <li><img src="img/img_5.webp" alt="picture"></li>
+            <li><img src="img/img_1.webp" alt="picture"></li>
+        </ul>
+
+        <div id="navDiv">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+
+    
+</body>
+</html>
